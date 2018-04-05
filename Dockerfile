@@ -7,8 +7,8 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 RUN cd /tmp \
     && apt-get update \
-    && apt-get -y --no-install-recommends --allow-unauthenticated install curl rsync \
-       sudo tar incron \
+    && apt-get -y --no-install-recommends --allow-unauthenticated install \
+       curl rsync sudo tar incron \
     && systemctl disable incron \
     && echo 'root' >> /etc/incron.allow \
     && dpkg --configure -a \

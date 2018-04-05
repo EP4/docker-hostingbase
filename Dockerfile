@@ -1,4 +1,4 @@
-FROM hyperknot/baseimage16:1.0.4
+FROM phusion/baseimage:0.10.0
 
 LABEL maintainer="Samuel Hautcoeur <samuel.hautcoeur@ep4.com>"
 
@@ -6,7 +6,6 @@ ENV DEBIAN_FRONTEND=noninteractive \
     LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 TERM=xterm container=docker
 
 RUN cd /tmp \
-    && apt-get update && apt-get -y --no-install-recommends upgrade \
     && apt-get -y --no-install-recommends --allow-unauthenticated install curl rsync \
        sudo tar \
     && systemctl disable incron \

@@ -11,8 +11,8 @@ RUN cd /tmp \
     && apt-add-repository -y ppa:ondrej/php \
     && apt-get update && apt-get -y --no-install-recommends upgrade \
     && apt-get -y --no-install-recommends --allow-unauthenticated install curl rsync apt-transport-https openssh-client openssh-server \
-       sudo tar apt-utils software-properties-common build-essential python-dev tcl openssl libpcre3 dnsmasq ca-certificates libpcre3-dev re2c \
-       libxml2-dev libxslt1-dev zlib1g-dev libffi-dev libssl-dev libmagickwand-dev procps imagemagick netcat libv8-6.6-dev pkg-config \
+       sudo tar apt-utils software-properties-common tcl openssl libpcre3 dnsmasq ca-certificates libpcre3-dev re2c \
+       libxml2-dev libxslt1-dev zlib1g-dev libffi-dev libssl-dev libmagickwand-dev procps imagemagick netcat pkg-config \
        mcrypt pwgen language-pack-en-base libicu-dev g++ cpp libglib2.0-dev incron \
        php7.2-dev php-pear php-xml php7.2-xml php7.0-dev php7.0-xml php7.1-dev php7.1-xml \
        libc6 libcurl3 libgcc1 libgssapi-krb5-2 liblttng-ust0 libssl1.0.0 libstdc++6 libunwind8 libuuid1 zlib1g \
@@ -29,9 +29,6 @@ RUN cd /tmp \
     && pecl install -f pcs \
     && pecl install -f igbinary \
     && pecl install -f imagick \
-    && cd /tmp && curl -sL https://pecl.php.net/get/v8js > v8js.tgz && tar -xf v8js.tgz && cd v8js-* && phpize && LDFLAGS="-lstdc++" ./configure --with-v8js=/opt/libv8-6.6/ && make && make install \
-    && cd /tmp && curl -sL https://pecl.php.net/get/v8 > v8.tgz && tar -xf v8.tgz && cd v8-* && phpize && ./configure --with-v8=/opt/libv8-6.6/ && make && make install \
-    && rm -rf /tmp/* \
     && update-alternatives --set php /usr/bin/php7.0 \
     && update-alternatives --set phar /usr/bin/phar7.0 \
     && update-alternatives --set phar.phar /usr/bin/phar.phar7.0 \
@@ -42,9 +39,6 @@ RUN cd /tmp \
     && pecl install -f pcs \
     && pecl install -f igbinary \
     && pecl install -f imagick \
-    && cd /tmp && curl -sL https://pecl.php.net/get/v8js > v8js.tgz && tar -xf v8js.tgz && cd v8js-* && phpize && LDFLAGS="-lstdc++" ./configure --with-v8js=/opt/libv8-6.6/ && make && make install \
-    && cd /tmp && curl -sL https://pecl.php.net/get/v8 > v8.tgz && tar -xf v8.tgz && cd v8-* && phpize && ./configure --with-v8=/opt/libv8-6.6/ && make && make install \
-    && rm -rf /tmp/* \
     && update-alternatives --set php /usr/bin/php7.1 \
     && update-alternatives --set phar /usr/bin/phar7.1 \
     && update-alternatives --set phar.phar /usr/bin/phar.phar7.1 \
@@ -55,13 +49,10 @@ RUN cd /tmp \
     && pecl install -f pcs \
     && pecl install -f igbinary \
     && pecl install -f imagick \
-    && cd /tmp && curl -sL https://pecl.php.net/get/v8js > v8js.tgz && tar -xf v8js.tgz && cd v8js-* && phpize && LDFLAGS="-lstdc++" ./configure --with-v8js=/opt/libv8-6.6/ && make && make install \
-    && cd /tmp && curl -sL https://pecl.php.net/get/v8 > v8.tgz && tar -xf v8.tgz && cd v8-* && phpize && ./configure --with-v8=/opt/libv8-6.6/ && make && make install \
     && apt-get -y autoremove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && rm -f /core \
-    && rm -rf /tmp/* \
     && find /etc/service/ -name "down" -exec rm -f {} \; \
     || true
 

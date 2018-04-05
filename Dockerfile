@@ -11,10 +11,7 @@ RUN cd /tmp \
     && apt-add-repository -y ppa:ondrej/php \
     && apt-get update && apt-get -y --no-install-recommends upgrade \
     && apt-get -y --no-install-recommends --allow-unauthenticated install curl rsync apt-transport-https \
-       sudo tar apt-utils software-properties-common tcl openssl libpcre3 dnsmasq ca-certificates libpcre3-dev re2c \
-       libxml2-dev libxslt1-dev zlib1g-dev libffi-dev libssl-dev libmagickwand-dev procps imagemagick netcat pkg-config \
-       mcrypt pwgen language-pack-en-base libicu-dev g++ cpp libglib2.0-dev incron \
-       libc6 libcurl3 libgcc1 libgssapi-krb5-2 liblttng-ust0 libssl1.0.0 libstdc++6 libunwind8 libuuid1 zlib1g \
+       sudo tar \
     && systemctl disable incron \
     && echo 'root' >> /etc/incron.allow \
     && dpkg --configure -a \

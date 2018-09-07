@@ -22,7 +22,6 @@ RUN cd /tmp \
 COPY rootfs/. /
 
 RUN cd /tmp \
-    && chmod +x /etc/service/sshd/run \
     && chmod +x /usr/bin/backup-creds.sh \
     && chmod +x /etc/service/incrond/run \
     && rm -rf /tmp/* \
